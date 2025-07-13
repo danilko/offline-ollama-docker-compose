@@ -9,8 +9,9 @@ pid=$!
 sleep 5
 
 echo "🔴 Retrieving model..."
-ollama pull gemma3:latest
 ollama pull gemma3n:latest
+ollama pull gemma3:4b
+ollama pull gemma3:12b
 echo "🟢 Done!"
 
 kill -9 $pid
