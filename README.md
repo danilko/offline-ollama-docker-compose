@@ -11,11 +11,23 @@ Sample to use docker-compose to:
 
 Start Up
 --
-Test in Fedora 41 with SELinux + Podman + Nvidia Toolkit Installation
+Test in Fedora 41 with SELinux + Podman `sudo dnf install podman docker-switch` + Nvidia Toolkit Installation
 ```
 mkdir -p ollama-data
 mkdir -p open-webui-data
 docker compose up
+```
+
+Access
+--
+The Ollama is available at
+```
+
+```
+
+The OpenWeb UI is available at
+```
+http://localhost:8080/
 ```
 
 Verification of no network access
