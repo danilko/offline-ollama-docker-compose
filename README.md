@@ -1,2 +1,27 @@
 # offline-ollama-docker-compose
 Sample Docker Compose for Offline Ollama Usage
+
+Overall Explanation
+--
+
+Sample to use docker-compose to:
+1. Perform download of ollama model with a container with network access into a share docker volume and auto stop
+2. Run the ollama model on a container with bridge network with no external network access
+3. Run the OpenWeb UI on another container with above bridge network with no external access
+
+Start Up
+--
+Test in Fedora 41 with SELinux + Podman + Nvidia Toolkit Installation
+```
+mkdir -p ollama-data
+mkdir -p open-webui-data
+docker compose up
+```
+
+Verification of no network access
+--
+After docker compose
+```
+docker exec -it ollama bash -c '(echo >/dev/tcp/google.com/443) &>/dev/null && echo "open" || echo "closed"'
+docker exec -it open-webui bash -c '(echo >/dev/tcp/google.com/443) &>/dev/null && echo "open" || echo "closed"'
+```
